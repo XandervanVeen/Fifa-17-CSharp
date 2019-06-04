@@ -8,7 +8,7 @@ namespace safefunction
 {
     public class Savedbet
     {
-        public string gameValue { get; set; }
+        public string gameID { get; set; }
         public string betTeam { get; set; }
         public string betScore  { get; set; }
         public int betAmount { get; set; }

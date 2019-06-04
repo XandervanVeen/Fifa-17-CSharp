@@ -16,9 +16,6 @@ namespace safefunction
         public static string dirpath = @"bets";
         public static string pathusers = @"bets\users.json";
 
-
-
-
         public installForm()
         {
             InitializeComponent();
@@ -50,10 +47,6 @@ namespace safefunction
                 this.Hide();
                 loginform.ShowDialog();
                 this.Close();
-            }
-            else
-            {
-
             }
         }
     }

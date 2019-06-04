@@ -48,6 +48,8 @@
             this.nameLabel = new System.Windows.Forms.Label();
             this.backButton = new System.Windows.Forms.Button();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.getBetButton = new System.Windows.Forms.Button();
+            this.clearBetsButton = new System.Windows.Forms.Button();
             this.match1GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.betAmountNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.team2NumericUpDown)).BeginInit();
@@ -57,6 +59,7 @@
             // tLabel
             // 
             this.tLabel.AutoSize = true;
+            this.tLabel.ForeColor = System.Drawing.SystemColors.Control;
             this.tLabel.Location = new System.Drawing.Point(12, 48);
             this.tLabel.Name = "tLabel";
             this.tLabel.Size = new System.Drawing.Size(55, 17);
@@ -66,6 +69,7 @@
             // balanceLabel
             // 
             this.balanceLabel.AutoSize = true;
+            this.balanceLabel.ForeColor = System.Drawing.SystemColors.Control;
             this.balanceLabel.Location = new System.Drawing.Point(642, 18);
             this.balanceLabel.Name = "balanceLabel";
             this.balanceLabel.Size = new System.Drawing.Size(16, 17);
@@ -76,6 +80,7 @@
             // bLabel
             // 
             this.bLabel.AutoSize = true;
+            this.bLabel.ForeColor = System.Drawing.SystemColors.Control;
             this.bLabel.Location = new System.Drawing.Point(592, 17);
             this.bLabel.Name = "bLabel";
             this.bLabel.Size = new System.Drawing.Size(56, 17);
@@ -85,6 +90,7 @@
             // resultLabel
             // 
             this.resultLabel.AutoSize = true;
+            this.resultLabel.ForeColor = System.Drawing.SystemColors.Control;
             this.resultLabel.Location = new System.Drawing.Point(593, 59);
             this.resultLabel.Name = "resultLabel";
             this.resultLabel.Size = new System.Drawing.Size(63, 17);
@@ -93,6 +99,8 @@
             // 
             // betListBox
             // 
+            this.betListBox.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.betListBox.ForeColor = System.Drawing.SystemColors.Control;
             this.betListBox.FormattingEnabled = true;
             this.betListBox.ItemHeight = 16;
             this.betListBox.Location = new System.Drawing.Point(596, 80);
@@ -102,17 +110,20 @@
             // 
             // betButton
             // 
+            this.betButton.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.betButton.ForeColor = System.Drawing.SystemColors.Control;
             this.betButton.Location = new System.Drawing.Point(177, 223);
             this.betButton.Name = "betButton";
-            this.betButton.Size = new System.Drawing.Size(410, 53);
+            this.betButton.Size = new System.Drawing.Size(206, 53);
             this.betButton.TabIndex = 21;
             this.betButton.Text = "Go!";
-            this.betButton.UseVisualStyleBackColor = true;
+            this.betButton.UseVisualStyleBackColor = false;
             this.betButton.Click += new System.EventHandler(this.betButton_Click);
             // 
             // titleLabel
             // 
             this.titleLabel.AutoSize = true;
+            this.titleLabel.ForeColor = System.Drawing.SystemColors.Control;
             this.titleLabel.Location = new System.Drawing.Point(42, 14);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(70, 17);
@@ -130,6 +141,7 @@
             this.match1GroupBox.Controls.Add(this.team2RadioButton);
             this.match1GroupBox.Controls.Add(this.team1Label);
             this.match1GroupBox.Controls.Add(this.team1RadioButton);
+            this.match1GroupBox.ForeColor = System.Drawing.SystemColors.Control;
             this.match1GroupBox.Location = new System.Drawing.Point(177, 72);
             this.match1GroupBox.Name = "match1GroupBox";
             this.match1GroupBox.Size = new System.Drawing.Size(410, 147);
@@ -152,6 +164,7 @@
             // iLabel
             // 
             this.iLabel.AutoSize = true;
+            this.iLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.iLabel.Location = new System.Drawing.Point(312, 121);
             this.iLabel.Name = "iLabel";
             this.iLabel.Size = new System.Drawing.Size(43, 17);
@@ -161,6 +174,7 @@
             // vsLabel
             // 
             this.vsLabel.AutoSize = true;
+            this.vsLabel.ForeColor = System.Drawing.SystemColors.Control;
             this.vsLabel.Location = new System.Drawing.Point(159, 57);
             this.vsLabel.Name = "vsLabel";
             this.vsLabel.Size = new System.Drawing.Size(52, 17);
@@ -196,9 +210,8 @@
             this.team2Label.AutoSize = true;
             this.team2Label.Location = new System.Drawing.Point(257, 56);
             this.team2Label.Name = "team2Label";
-            this.team2Label.Size = new System.Drawing.Size(46, 17);
+            this.team2Label.Size = new System.Drawing.Size(0, 17);
             this.team2Label.TabIndex = 3;
-            this.team2Label.Text = "label2";
             // 
             // team2RadioButton
             // 
@@ -215,9 +228,8 @@
             this.team1Label.AutoSize = true;
             this.team1Label.Location = new System.Drawing.Point(78, 56);
             this.team1Label.Name = "team1Label";
-            this.team1Label.Size = new System.Drawing.Size(46, 17);
+            this.team1Label.Size = new System.Drawing.Size(0, 17);
             this.team1Label.TabIndex = 1;
-            this.team1Label.Text = "label1";
             // 
             // team1RadioButton
             // 
@@ -232,6 +244,7 @@
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
+            this.nameLabel.ForeColor = System.Drawing.SystemColors.Control;
             this.nameLabel.Location = new System.Drawing.Point(118, 14);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(0, 17);
@@ -239,27 +252,58 @@
             // 
             // backButton
             // 
+            this.backButton.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.backButton.ForeColor = System.Drawing.SystemColors.Control;
             this.backButton.Location = new System.Drawing.Point(7, 11);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(29, 23);
             this.backButton.TabIndex = 32;
             this.backButton.Text = "<";
-            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.UseVisualStyleBackColor = false;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // treeView1
             // 
+            this.treeView1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.treeView1.ForeColor = System.Drawing.SystemColors.Window;
             this.treeView1.Location = new System.Drawing.Point(7, 80);
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(164, 196);
             this.treeView1.TabIndex = 33;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
+            // getBetButton
+            // 
+            this.getBetButton.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.getBetButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.getBetButton.Location = new System.Drawing.Point(389, 223);
+            this.getBetButton.Name = "getBetButton";
+            this.getBetButton.Size = new System.Drawing.Size(198, 53);
+            this.getBetButton.TabIndex = 34;
+            this.getBetButton.Text = "Check Bets";
+            this.getBetButton.UseVisualStyleBackColor = false;
+            this.getBetButton.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // clearBetsButton
+            // 
+            this.clearBetsButton.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.clearBetsButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.clearBetsButton.Location = new System.Drawing.Point(706, 28);
+            this.clearBetsButton.Name = "clearBetsButton";
+            this.clearBetsButton.Size = new System.Drawing.Size(54, 46);
+            this.clearBetsButton.TabIndex = 35;
+            this.clearBetsButton.Text = "Clear Bets";
+            this.clearBetsButton.UseVisualStyleBackColor = false;
+            this.clearBetsButton.Click += new System.EventHandler(this.clearBetsButton_Click);
+            // 
             // loggedinForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(769, 280);
+            this.Controls.Add(this.clearBetsButton);
+            this.Controls.Add(this.getBetButton);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.nameLabel);
@@ -306,5 +350,7 @@
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.Button getBetButton;
+        private System.Windows.Forms.Button clearBetsButton;
     }
 }

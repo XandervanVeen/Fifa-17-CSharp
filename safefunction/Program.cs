@@ -9,11 +9,10 @@ namespace safefunction
     public class Program
     {
         public static List<User> Users = new List<User>();
-        public static string loggeduser;
         public static Matches matches = new Matches();
+        public static string path = @"bets\users.json";
+        public static string pathusers = @"bets\users.json";
 
-        // User baby = new User();
-        //public static List<string> users = new List<string>();
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

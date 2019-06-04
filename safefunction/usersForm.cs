@@ -21,7 +21,6 @@ namespace safefunction
         {
             InitializeComponent();
             this.user = user;
-            //Program.Users.Add(new User());
         }
 
         private void userslist_Load(object sender, EventArgs e)
@@ -38,14 +37,12 @@ namespace safefunction
             }
             catch (System.ArgumentNullException)
             {
-
                 loginForm loginform = new loginForm();
                 MessageBox.Show("Maak eerst een gebruiker.");
                 this.Hide();
                 loginform.ShowDialog();
                 this.Close();
             }
-            
         }
 
         private void loginButton_Click(object sender, EventArgs e)
@@ -64,23 +61,19 @@ namespace safefunction
             catch (Exception)
             {
                 MessageBox.Show("Selecteer een user");
+                return;
             }
-
             loggedinForm loggedinform = new loggedinForm(user);
-            //MessageBox.Show("Je naam is: " + selecteduser.Username + " Je credits zijn: " + selecteduser.Credits);
-            Program.loggeduser = selecteduser.Username;
             user.Username = selecteduser.Username;
             user.Credits = selecteduser.Credits;
             this.Hide();
             loggedinform.ShowDialog();
             this.Close();
-
         }
 
         private void backButton_Click(object sender, EventArgs e)
         {
             loginForm loginform = new loginForm();
-
             this.Hide();
             loginform.ShowDialog();
             this.Close();

@@ -16,9 +16,7 @@ namespace safefunction
     public partial class loginForm : Form
     {
         public static string path = @"bets\users.json";
-        //string temp = "[{" + "\"Username\"" + ":" + "\"temp\"" + "," + "\"Credits\"" + ":0"+","+"\""+"team"+"\""+":null,"+"\""+"amount"+"\""+":0"+"}"+"]";
         public static string pathusers = @"bets\users.json";
-
 
         User user = new User();
         public loginForm()
@@ -39,7 +37,6 @@ namespace safefunction
 
         private void registerButton_Click(object sender, EventArgs e)
         {
-
             string input = registerTextBox.Text;
 
             if (input == "")
@@ -69,9 +66,7 @@ namespace safefunction
                 {
                     MessageBox.Show("Er ging iets mis.");
                 }
-
             }
-         
         }
 
         private void loginButton_Click(object sender, EventArgs e)
@@ -81,7 +76,5 @@ namespace safefunction
             usersForm.ShowDialog();
             this.Close();
         }
-
-
     }
 }

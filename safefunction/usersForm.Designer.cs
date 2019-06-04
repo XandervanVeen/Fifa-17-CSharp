@@ -35,6 +35,8 @@
             // 
             // userListBox
             // 
+            this.userListBox.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.userListBox.ForeColor = System.Drawing.SystemColors.Control;
             this.userListBox.FormattingEnabled = true;
             this.userListBox.ItemHeight = 16;
             this.userListBox.Location = new System.Drawing.Point(37, 12);
@@ -44,28 +46,33 @@
             // 
             // loginButton
             // 
+            this.loginButton.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.loginButton.ForeColor = System.Drawing.SystemColors.Control;
             this.loginButton.Location = new System.Drawing.Point(37, 470);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(172, 46);
             this.loginButton.TabIndex = 1;
             this.loginButton.Text = "Login";
-            this.loginButton.UseVisualStyleBackColor = true;
+            this.loginButton.UseVisualStyleBackColor = false;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // backButton
             // 
+            this.backButton.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.backButton.ForeColor = System.Drawing.SystemColors.Control;
             this.backButton.Location = new System.Drawing.Point(2, 12);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(29, 23);
             this.backButton.TabIndex = 2;
             this.backButton.Text = "<";
-            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.UseVisualStyleBackColor = false;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // usersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(215, 528);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.loginButton);
