@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.nameLabel = new System.Windows.Forms.Label();
             this.installButton = new System.Windows.Forms.Button();
-            this.installTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // nameLabel
@@ -72,6 +70,5 @@
 
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Button installButton;
-        private System.Windows.Forms.Timer installTimer;
     }
 }

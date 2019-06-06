@@ -49,7 +49,6 @@
             this.backButton = new System.Windows.Forms.Button();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.getBetButton = new System.Windows.Forms.Button();
-            this.clearBetsButton = new System.Windows.Forms.Button();
             this.match1GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.betAmountNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.team2NumericUpDown)).BeginInit();
@@ -99,6 +98,8 @@
             // 
             // betListBox
             // 
+            this.betListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.betListBox.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.betListBox.ForeColor = System.Drawing.SystemColors.Control;
             this.betListBox.FormattingEnabled = true;
@@ -264,6 +265,8 @@
             // 
             // treeView1
             // 
+            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.treeView1.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.treeView1.ForeColor = System.Drawing.SystemColors.Window;
             this.treeView1.Location = new System.Drawing.Point(7, 80);
@@ -284,25 +287,12 @@
             this.getBetButton.UseVisualStyleBackColor = false;
             this.getBetButton.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // clearBetsButton
-            // 
-            this.clearBetsButton.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.clearBetsButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.clearBetsButton.Location = new System.Drawing.Point(706, 28);
-            this.clearBetsButton.Name = "clearBetsButton";
-            this.clearBetsButton.Size = new System.Drawing.Size(54, 46);
-            this.clearBetsButton.TabIndex = 35;
-            this.clearBetsButton.Text = "Clear Bets";
-            this.clearBetsButton.UseVisualStyleBackColor = false;
-            this.clearBetsButton.Click += new System.EventHandler(this.clearBetsButton_Click);
-            // 
             // loggedinForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(769, 280);
-            this.Controls.Add(this.clearBetsButton);
             this.Controls.Add(this.getBetButton);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.backButton);
@@ -351,6 +341,5 @@
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.Button getBetButton;
-        private System.Windows.Forms.Button clearBetsButton;
     }
 }

@@ -35,7 +35,7 @@ namespace safefunction
             {
                 MessageBox.Show("Alle bestand zijn al gedownload");
             }
-            MessageBox.Show("Bestanden gedownload" + "\n" + "Her-open het programma");
+            MessageBox.Show("Bestanden gedownload\nHer-open het programma");
             this.Close();
         }
 
