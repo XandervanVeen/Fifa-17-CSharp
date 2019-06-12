@@ -215,7 +215,7 @@ namespace safefunction
                             {
                                 team2win = true;
                             }
-                            else if (Int32.Parse(Program.matches.matchInfo[i].team1score) ==0 && Int32.Parse(Program.matches.matchInfo[i].team2score)==0)
+                            else if (Int32.Parse(Program.matches.matchInfo[i].team1score) == Int32.Parse(Program.matches.matchInfo[i].team2score))
                             {
                                 team3win = true;
                             }
