@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(usersForm));
             this.userListBox = new System.Windows.Forms.ListBox();
             this.loginButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
@@ -35,6 +36,9 @@
             // 
             // userListBox
             // 
+            this.userListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.userListBox.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.userListBox.ForeColor = System.Drawing.SystemColors.Control;
             this.userListBox.FormattingEnabled = true;
@@ -43,9 +47,12 @@
             this.userListBox.Name = "userListBox";
             this.userListBox.Size = new System.Drawing.Size(172, 452);
             this.userListBox.TabIndex = 0;
+            this.userListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.userListBox_MouseDoubleClick);
             // 
             // loginButton
             // 
+            this.loginButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.loginButton.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.loginButton.ForeColor = System.Drawing.SystemColors.Control;
             this.loginButton.Location = new System.Drawing.Point(37, 470);
@@ -77,8 +84,8 @@
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.userListBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "usersForm";
-            this.Text = "userslist";
             this.Load += new System.EventHandler(this.userslist_Load);
             this.ResumeLayout(false);
 

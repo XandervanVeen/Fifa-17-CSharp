@@ -60,7 +60,7 @@ namespace safefunction
             }
             catch (Exception)
             {
-                MessageBox.Show("Selecteer een user");
+                MessageBox.Show("Selecteer een gebruiker");
                 return;
             }
             loggedinForm loggedinform = new loggedinForm(user);
@@ -77,6 +77,39 @@ namespace safefunction
             this.Hide();
             loginform.ShowDialog();
             this.Close();
+        }
+
+        private void userListBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                User selecteduser = (User)userListBox.SelectedItem;
+                try
+                {
+                    foreach (User search in Program.Users)
+                    {
+                        if (search.Username == selecteduser.Username)
+                        {
+                            user = search;
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+
+                }
+                loggedinForm loggedinform = new loggedinForm(user);
+                user.Username = selecteduser.Username;
+                user.Credits = selecteduser.Credits;
+                this.Hide();
+                loggedinform.ShowDialog();
+                this.Close();
+            }
+            catch (Exception)
+            {
+
+                
+            }
         }
     }
 }

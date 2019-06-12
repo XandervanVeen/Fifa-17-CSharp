@@ -28,11 +28,16 @@ namespace safefunction
         {
             string data = File.ReadAllText(path);
             List<User> users = JsonConvert.DeserializeObject<List<User>>(data);
+            // Als er nog geen user is maakt hij alvast een list aan anders probeert hij een list optehalen die niet bestaat.
             if (users == null)
             {
                 users = new List<User>();
             }
+            //==============================================================================================================
+           
+            // hier zet ik de nieuwe user in de program.user
             Program.Users = users;
+            //==============================================
         }
 
         private void registerButton_Click(object sender, EventArgs e)
@@ -41,7 +46,7 @@ namespace safefunction
 
             if (input == "")
             {
-                MessageBox.Show("Vul een username in.");
+                MessageBox.Show("Vul een gebruikersnaam in.");
             }
             else
             {
@@ -49,16 +54,17 @@ namespace safefunction
                 {
                     user.Username = input;
                     foreach (User person in Program.Users)
-                    {
+                    {// Hij loopt over elke user en naamt hem person. Daarna kijkt hij op de username van elke persoon gelijk
+                        // is aan de input van de user. Als dit klopt, bestaat de user all.
                         if (person.Username == input)
                         {
-                            MessageBox.Show("Deze gebruiker bestaat al. \n Verzin een nieuwe naam.");
+                            MessageBox.Show("Deze gebruiker bestaat al. \nVerzin een nieuwe naam.");
                             return;
                         }
-                    }
+                    }//===========================================================================
                     user.Credits = 50;
                     Program.Users.Add(user);
-                    MessageBox.Show("User aan gemaakt");
+                    MessageBox.Show("Gebruiker aan gemaakt");
                     string jsond = JsonConvert.SerializeObject(Program.Users);
                     File.WriteAllText(path, jsond);
                 }

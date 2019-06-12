@@ -20,6 +20,9 @@ namespace safefunction
         private SoundPlayer _soundPlayer = new SoundPlayer(@"cheer2.wav");
         User user;
         ulong credit;
+        bool team1win;
+        bool team2win;
+        bool team3win;
         public static string path = @"bets\users.json";
 
         public loggedinForm(User user)
@@ -45,23 +48,32 @@ namespace safefunction
             for (int i = 0; i < user.Savedbets.Count; i++)
             {
                 int GameID = Int32.Parse(user.Savedbets[i].gameID);
-                betListBox.Items.Add("Game: " + GameID);
+                betListBox.Items.Add("Wedstrijd: " + GameID);
                 betListBox.Items.Add("Team:" + user.Savedbets[i].betTeam);
                 betListBox.Items.Add("Score: " + user.Savedbets[i].betScore);
-                betListBox.Items.Add("Amount: " + user.Savedbets[i].betAmount);
+                betListBox.Items.Add("Credits: " + user.Savedbets[i].betAmount);
                 betListBox.Items.Add("\n");
             }
         }
 
         private void loggedinForm_Load(object sender, EventArgs e)
         {
-            Program.matches.getData();
-
+            try
+            {
+                Program.matches.getData();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Uw api sleutel klopt niet!");
+                ApiForm apiForm = new ApiForm();
+                this.Hide(); 
+                apiForm.ShowDialog();
+                this.Close();
+            }
             updateListBox();
-
             for (int i = 0; i < Program.matches.matchInfo.Count; i++)
             {
-                TreeNode gameTreeNode = treeView1.Nodes.Add("Game " + (i +1));
+                TreeNode gameTreeNode = treeView1.Nodes.Add("Wedstrijd " + (i +1));
                 gameTreeNode.Tag = Program.matches.matchInfo[i];
                 gameTreeNode.Nodes.Add(Program.matches.matchInfo[i].team1);
                 gameTreeNode.Nodes.Add(Program.matches.matchInfo[i].team2);
@@ -69,7 +81,6 @@ namespace safefunction
             credit = user.Credits;
             nameLabel.Text = user.Username;
             balanceLabel.Text = credit.ToString();
-
             string data = File.ReadAllText(path);
             List<User> users = JsonConvert.DeserializeObject<List<User>>(data);
         }
@@ -82,9 +93,7 @@ namespace safefunction
 
         private void betButton_Click(object sender, EventArgs e)
         {
-
             Savedbet savedbet = new Savedbet();
-
             try
             {
                 MatchInfo matchInfo = (MatchInfo)treeView1.SelectedNode.Tag;
@@ -97,7 +106,7 @@ namespace safefunction
                 {
                     if (bet.gameID.ToString() == matchInfo.id.ToString())
                     {
-                        MessageBox.Show("Je hebt al een bet op deze game");
+                        MessageBox.Show("Je hebt al een weddenschap op deze wedstrijd");
                         return;
                     }
                 }
@@ -117,16 +126,15 @@ namespace safefunction
                     MessageBox.Show("Je hebt hier niet genoeg geld voor.");
                     return;
                 }
-
                 savedbet.betScore = team1NumericUpDown.Value.ToString() + " - " + team2NumericUpDown.Value.ToString();
                 try
                 {
                     savedbet.gameID = matchInfo.id.ToString();
                     user.Savedbets.Add(savedbet);
-                    betListBox.Items.Add("Game: " + (matchInfo.id));
+                    betListBox.Items.Add("Wedstrijd: " + (matchInfo.id));
                     betListBox.Items.Add("Team:" + savedbet.betTeam);
                     betListBox.Items.Add("Score: " + savedbet.betScore);
-                    betListBox.Items.Add("Amount: " + savedbet.betAmount);
+                    betListBox.Items.Add("Credits: " + savedbet.betAmount);
                     betListBox.Items.Add("\n");
                 }
                 catch
@@ -134,27 +142,21 @@ namespace safefunction
                     MessageBox.Show("Kies een team");
                     return;
                 }
-
                 ulong newbal = user.Credits - (ulong)betAmountNumericUpDown.Value;
                 balanceLabel.Text = newbal.ToString();
-
                 user.Credits = newbal;
                 string jsond = JsonConvert.SerializeObject(Program.Users);
                 File.WriteAllText(path, jsond);
-                _soundPlayer.Play();
             }
             catch (Exception)
             {
-                MessageBox.Show("Selecteer een game.");
+                MessageBox.Show("Selecteer een wedstrijd.");
             }
-
-
         }
 
         private void backButton_Click(object sender, EventArgs e)
         {
             loginForm loginform = new loginForm();
-
             this.Hide();
             loginform.ShowDialog();
             this.Close();
@@ -184,21 +186,18 @@ namespace safefunction
             }
             catch (Exception)
             {
-
                 return;
             }
-
         }
-
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             if (user.Savedbets.Count == 0)
             {
-                MessageBox.Show("Er zijn nog geen bets!");
+                MessageBox.Show("Er zijn nog geen weddenschappen!");
                 return;
             }
-            DialogResult dialogResult = MessageBox.Show("Weet je zeker dat je de bets wilt checken?\nAls er nog geen score is, is je bet fout!", "Check Bets", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Weet je zeker dat je de weddenschappen wilt controleren?\nAls er nog geen score is, is je weddenschap fout!", "Controleer weddenschap", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 foreach (var bet in user.Savedbets)
@@ -208,86 +207,69 @@ namespace safefunction
                     {
                         if (Program.matches.matchInfo[i].id == GameID)
                         {
-                            bool team1win;
-                            bool team2win;
-
                             if (Int32.Parse(Program.matches.matchInfo[i].team1score) > Int32.Parse(Program.matches.matchInfo[i].team2score))
                             {
                                 team1win = true;
                             }
-                            else
+                            else if (Int32.Parse(Program.matches.matchInfo[i].team1score) < Int32.Parse(Program.matches.matchInfo[i].team2score))
                             {
                                 team2win = true;
+                            }
+                            else if (Int32.Parse(Program.matches.matchInfo[i].team1score) ==0 && Int32.Parse(Program.matches.matchInfo[i].team2score)==0)
+                            {
+                                team3win = true;
                             }
 
                             string resultscore = Program.matches.matchInfo[i].team1score + " - " + Program.matches.matchInfo[i].team2score + Program.matches.matchInfo[i].id;
                             int GameId = Int32.Parse(bet.gameID);
                             string betting = bet.betScore + bet.gameID;
-
-                            if (team1win = true && bet.betTeam == Program.matches.matchInfo[i].team1 && betting == resultscore)
+                            if (team3win == true)
                             {
-                                MessageBox.Show("Beide uw gebetten score en gebetten team op game " + GameId + " is gelijk!\nPay-out is x5!");
-                                user.Credits = user.Credits + ((ulong)bet.betAmount * 5);
+                                MessageBox.Show("Gelijk spel!\nNiks gewonnen.");
                             }
-                            else if (team2win = true && bet.betTeam == Program.matches.matchInfo[i].team2 && betting == resultscore)
+                            else if (betting == resultscore && team1win == true && bet.betTeam == Program.matches.matchInfo[i].team1)
                             {
-                                MessageBox.Show("Beide uw gebetten score en gebetten team op game " + GameId + " is gelijk!\nPay-out is x5!");
-                                user.Credits = user.Credits + ((ulong)bet.betAmount * 5);
-                            }
-                            else if (betting == resultscore)
-                            {
-                                MessageBox.Show("Uw gebetten score op game " + GameId + " is gelijk!\nPay-out is x3!");
+                                _soundPlayer.Play();
                                 user.Credits = user.Credits + ((ulong)bet.betAmount * 3);
+                                MessageBox.Show("Uw gewedden score op wedstrijd " + GameId + " is gelijk!\nuitbetaling is x3!");
                             }
-                            else if (team1win = true && bet.betTeam == Program.matches.matchInfo[i].team1)
+                            else if(betting == resultscore && team2win == true && bet.betTeam == Program.matches.matchInfo[i].team2)
                             {
-                                MessageBox.Show("Uw gebetten Team op game " + GameId + " is gelijk!\nPay-out is x2!");
+                                _soundPlayer.Play();
+                                user.Credits = user.Credits + ((ulong)bet.betAmount * 3);
+                                MessageBox.Show("Uw gewedden score op wedstrijd " + GameId + " is gelijk!\nuitbetaling is x3!");
+                            }
+                            else if (team1win == true && bet.betTeam == Program.matches.matchInfo[i].team1)
+                            {
+                                _soundPlayer.Play();
                                 user.Credits = user.Credits + ((ulong)bet.betAmount * 2);
                                 updateLabel();
+                                MessageBox.Show("Uw gewedden team op wedstrijd " + GameId + " is gelijk!\nuitbetaling is x2!");
                             }
-                            else if (team2win = true && bet.betTeam == Program.matches.matchInfo[i].team2)
+                            else if (team2win == true && bet.betTeam == Program.matches.matchInfo[i].team2)
                             {
-                                MessageBox.Show("Uw gebetten Tean op game " + GameId + " is gelijk!\nPay-out is x2!");
+                                _soundPlayer.Play();
                                 user.Credits = user.Credits + ((ulong)bet.betAmount * 2);
                                 updateLabel();
+                                MessageBox.Show("Uw gewedden team op wedstrijd " + GameId + " is gelijk!\nuitbetaling is x2!");
                             }
                             else
                             {
                                 MessageBox.Show("Helaas!\nNiks gewonnen.");
                             }
-                         
                         }
                     }
                 }
                 user.Savedbets.Clear();
-
                 updateListBox();
+                updateLabel();
             }
             else if (dialogResult == DialogResult.No)
             {
                 return;
             }
-            
-            
             string jsond = JsonConvert.SerializeObject(Program.Users);
             File.WriteAllText(path, jsond);
-        }
-
-        private void clearBetsButton_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Weet je zeker dat je de bets wilt clearen?\nJe credits krijg je niet terug!", "Clear Bets", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                for (int i = 0; i < user.Savedbets.Count; i++)
-                {
-                    user.Savedbets.RemoveAt(i);
-                }
-                updateListBox();
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                return;
-            }
         }
     }
 }

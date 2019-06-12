@@ -12,10 +12,9 @@ namespace safefunction
        public ulong Credits;
        public List<Savedbet> Savedbets = new List<Savedbet>();
 
-       public override string ToString()
-       {
+        public override string ToString()
+        {
             return Username;
-       }
-
+        }
     }
 }

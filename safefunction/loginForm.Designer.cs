@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(loginForm));
             this.registerButton = new System.Windows.Forms.Button();
             this.loginButton = new System.Windows.Forms.Button();
             this.registerTextBox = new System.Windows.Forms.TextBox();
@@ -54,7 +55,7 @@
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(114, 64);
             this.loginButton.TabIndex = 1;
-            this.loginButton.Text = "Users";
+            this.loginButton.Text = "Gebruikers";
             this.loginButton.UseVisualStyleBackColor = false;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
@@ -77,9 +78,9 @@
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 17);
+            this.label1.Size = new System.Drawing.Size(121, 17);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Username:";
+            this.label1.Text = "Gebruikers naam:";
             // 
             // loginForm
             // 
@@ -91,8 +92,8 @@
             this.Controls.Add(this.registerTextBox);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.registerButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "loginForm";
-            this.Text = "Form1";
             this.Load += new System.EventHandler(this.loginForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(loggedinForm));
             this.tLabel = new System.Windows.Forms.Label();
             this.balanceLabel = new System.Windows.Forms.Label();
             this.bLabel = new System.Windows.Forms.Label();
@@ -92,9 +93,9 @@
             this.resultLabel.ForeColor = System.Drawing.SystemColors.Control;
             this.resultLabel.Location = new System.Drawing.Point(593, 59);
             this.resultLabel.Name = "resultLabel";
-            this.resultLabel.Size = new System.Drawing.Size(63, 17);
+            this.resultLabel.Size = new System.Drawing.Size(156, 17);
             this.resultLabel.TabIndex = 23;
-            this.resultLabel.Text = "Uw Bets:";
+            this.resultLabel.Text = "Uw weddenschap(pen):";
             // 
             // betListBox
             // 
@@ -127,9 +128,9 @@
             this.titleLabel.ForeColor = System.Drawing.SystemColors.Control;
             this.titleLabel.Location = new System.Drawing.Point(42, 14);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(70, 17);
+            this.titleLabel.Size = new System.Drawing.Size(62, 17);
             this.titleLabel.TabIndex = 20;
-            this.titleLabel.Text = "Welcome:";
+            this.titleLabel.Text = "Welkom:";
             // 
             // match1GroupBox
             // 
@@ -168,9 +169,9 @@
             this.iLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.iLabel.Location = new System.Drawing.Point(312, 121);
             this.iLabel.Name = "iLabel";
-            this.iLabel.Size = new System.Drawing.Size(43, 17);
+            this.iLabel.Size = new System.Drawing.Size(42, 17);
             this.iLabel.TabIndex = 14;
-            this.iLabel.Text = "Input:";
+            this.iLabel.Text = "Inzet:";
             // 
             // vsLabel
             // 
@@ -283,7 +284,7 @@
             this.getBetButton.Name = "getBetButton";
             this.getBetButton.Size = new System.Drawing.Size(198, 53);
             this.getBetButton.TabIndex = 34;
-            this.getBetButton.Text = "Check Bets";
+            this.getBetButton.Text = "Controleer weddenschap";
             this.getBetButton.UseVisualStyleBackColor = false;
             this.getBetButton.Click += new System.EventHandler(this.button1_Click_1);
             // 
@@ -305,8 +306,9 @@
             this.Controls.Add(this.betButton);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.match1GroupBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "loggedinForm";
-            this.Text = "loggedinForm";
+            this.Text = "Dashboard";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.loggedinForm_FormClosing);
             this.Load += new System.EventHandler(this.loggedinForm_Load);
             this.match1GroupBox.ResumeLayout(false);

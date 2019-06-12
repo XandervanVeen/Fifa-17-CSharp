@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(installForm));
             this.nameLabel = new System.Windows.Forms.Label();
             this.installButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -37,9 +38,9 @@
             this.nameLabel.AutoSize = true;
             this.nameLabel.Location = new System.Drawing.Point(12, 12);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(459, 17);
+            this.nameLabel.Size = new System.Drawing.Size(430, 17);
             this.nameLabel.TabIndex = 3;
-            this.nameLabel.Text = "Press the install button to download the files needed to run the program";
+            this.nameLabel.Text = "Druk op de installeer knop om de laatste bestanden te downloaden";
             // 
             // installButton
             // 
@@ -47,7 +48,7 @@
             this.installButton.Name = "installButton";
             this.installButton.Size = new System.Drawing.Size(465, 126);
             this.installButton.TabIndex = 2;
-            this.installButton.Text = "Install";
+            this.installButton.Text = "Installeren";
             this.installButton.UseVisualStyleBackColor = true;
             this.installButton.Click += new System.EventHandler(this.installButton_Click);
             // 
@@ -58,8 +59,9 @@
             this.ClientSize = new System.Drawing.Size(489, 182);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.installButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "installForm";
-            this.Text = "installForm";
+            this.Text = "installeerForm";
             this.Load += new System.EventHandler(this.installForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
